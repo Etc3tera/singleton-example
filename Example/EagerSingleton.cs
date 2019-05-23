@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Example
 {
-    public class EagerSingleton
+    public sealed class EagerSingleton
     {
         private int counter = 0;
         private static EagerSingleton instance = new EagerSingleton();

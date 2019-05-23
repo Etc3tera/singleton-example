@@ -33,7 +33,7 @@ namespace Funny.Test
                   }
                 ]");
 
-            // Let's our cache run
+            // Let our cache run
             var results = TestablePostCache.Instance.GetAll();
 
             Assert.IsTrue(TestablePostCache.HasLoaded);
