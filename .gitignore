@@ -1,0 +1,10 @@
+.vs
+Example/bin
+Example/obj
+Example.Test/bin
+Example.Test/obj/Debug
+Funny/bin
+Funny/obj
+Funny.Test/bin
+Funny.Test/obj
+packages
