@@ -10,7 +10,7 @@ namespace Funny
     {
         public Post GetSmallestOne()
         {
-            var items = TestablePostCache.Instance.GetAll();
+            var items = PostCache.Instance.GetAll();
             int minIndex = -1;
             int minValue = int.MaxValue;
             for (int i = 0; i < items.Count; i++)

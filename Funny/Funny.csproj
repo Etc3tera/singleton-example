@@ -50,7 +50,6 @@
     <Compile Include="FunnyRepository.cs" />
     <Compile Include="IWebClient.cs" />
     <Compile Include="Post.cs" />
-    <Compile Include="TestablePostCache.cs" />
     <Compile Include="PostCache.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
