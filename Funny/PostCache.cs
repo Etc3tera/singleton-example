@@ -8,17 +8,22 @@ using System.Threading.Tasks;
 
 namespace Funny
 {
-    public sealed class PostCache
+    public interface IPostCache
+    {
+        List<Post> GetAll();
+    }
+
+    public sealed class PostCache : IPostCache
     {
         private List<Post> data;
-        private static Lazy<PostCache> instance = new Lazy<PostCache>(() => new PostCache());
+        private static Lazy<IPostCache> instance = new Lazy<IPostCache>(() => new PostCache());
 
         private PostCache()
         {
             cacheData();
         }
 
-        public static PostCache Instance
+        public static IPostCache Instance
         {
             get
             {
@@ -30,6 +35,18 @@ namespace Funny
         {
             return data;
         }
+
+        #region For Injection Purpose
+        public static void Use(IPostCache cacheInstance)
+        {
+            instance = new Lazy<IPostCache>(() => cacheInstance);
+        }
+
+        public static void UseDefault()
+        {
+            instance = new Lazy<IPostCache>(() => new PostCache());
+        }
+        #endregion
 
         private void cacheData()
         {
