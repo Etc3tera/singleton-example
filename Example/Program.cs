@@ -19,7 +19,7 @@ namespace Example
             LazySingleton.Instance.Add();
             Console.WriteLine($"value = {LazySingleton.Instance.Hora()}");
 
-            // Ex.1
+            // Ex.3
             LazyThreadSafeSingleton.Instance.Add();
             LazyThreadSafeSingleton.Instance.Add();
             Console.WriteLine($"value = {LazyThreadSafeSingleton.Instance.Hora()}");
