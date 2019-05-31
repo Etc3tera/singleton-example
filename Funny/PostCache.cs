@@ -16,6 +16,8 @@ namespace Funny
     public sealed class PostCache : IPostCache
     {
         private List<Post> data;
+
+        private static IWebClientFactory factory = new WebClientFactory();
         private static Lazy<IPostCache> instance = new Lazy<IPostCache>(() => new PostCache());
 
         private PostCache()
@@ -46,11 +48,21 @@ namespace Funny
         {
             instance = new Lazy<IPostCache>(() => new PostCache());
         }
+
+        public static void UseFactory(IWebClientFactory factory)
+        {
+            PostCache.factory = factory;
+        }
+
+        public static void UseDefaultFactory()
+        {
+            factory = new WebClientFactory();
+        }
         #endregion
 
         private void cacheData()
         {
-            using (var client = new WebClient())
+            using (var client = factory.GetClient())
             {
                 var jsonString = client.DownloadString("https://jsonplaceholder.typicode.com/posts");
                 data = JsonConvert.DeserializeObject<List<Post>>(jsonString);
